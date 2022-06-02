@@ -1,0 +1,23 @@
+{% extends 'base.html' %} 
+{% block content %}
+<div class="detail__img">
+    <img src="{{finch.img}}" alt="{{finch.name}}" />
+</div>
+<div class="detail__name">
+    <h1 class="title">{{finch.name}}</h1>
+</div>
+<div class="detail__container">
+    <div class="buttons">
+        <a href="{% url 'finch_update' finch.pk %}" class="button is-info">Update</a>
+        <a href="{% url 'finch_delete' finch.pk %}" class="button is-danger">Delete</a>
+    </div>
+    <div class="detail__about">
+        <h4 class="title is-4">About</h4>
+        <p>Habitat: {{finch.habitat}}</p>
+        <p>What They Eat: {{finch.food}}</p>
+        <p>Nesting: {{finch.nesting}}</p>
+        <p>{{finch.description}}</p>
+    </div>
+</div>
+
+{% endblock %}

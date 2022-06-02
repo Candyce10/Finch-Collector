@@ -1,0 +1,11 @@
+INSERT INTO main_app_finch(name, img, habitat, food, nesting, description)
+    VALUES
+        ('Evening Grosbeak', 'https://www.birdnote.org/sites/default/files/Evening-Grosbeak-1024-Jerry-McFarland-CC.jpg', 'Forests', 'Seeds', 'Tree', 'A heavyset finch of northern coniferous forests, the Evening Grosbeak adds a splash of color to winter bird feeders every few years, when large flocks depart their northern breeding grounds en masse to seek food to the south. The yellow-bodied, dusky-headed male has an imposing air thanks to his massive bill and fierce eyebrow stripe. The female is more subtly marked, with golden highlights on her soft gray plumage. This declining species is becoming uncommon, particularly in the eastern United States.');
+
+INSERT INTO main_app_finch(name, img, habitat, food, nesting, description)
+    VALUES
+        ('Common Redpoll', 'https://cdn.download.ams.birds.cornell.edu/api/v1/asset/68754031/1800', 'Open Woodlands', 'Seeds', 'Shrub', 'As energetic as their electric zapping call notes would suggest, Common Redpolls are active foragers that travel in busy flocks. Look for them feeding on catkins in birch trees or visiting feeders in winter. These small finches of the arctic tundra and boreal forest migrate erratically, and they occasionally show up in large numbers as far south as the central U.S. During such irruption years, redpolls often congregate at bird feeders (particularly thistle or nyjer seed), allowing delightfully close looks.' );
+
+INSERT INTO main_app_finch(name, img, habitat, food, nesting, description)
+    VALUES
+        ('Cassia Crossbill', 'https://cdn.download.ams.birds.cornell.edu/api/v1/asset/306391451/1800', 'Forests', 'Seeds', 'Tree', 'The Cassia Crossbill, a finch with a crisscrossed bill, is closely related to the widespread Red Crossbill and was recognized as a full species in 2017. Unlike the nomadic Red Crossbill, the Cassia stays put year-round in a single county in Idaho, feeding on lodgepole pine cones that the Red Crossbill cannot open. Groups of the red and yellow finches dangle from cones, quietly munching on seeds, until they erupt into flight with a kip. The species'' small population and geographic isolation makes it vulnerable to extinction.');
