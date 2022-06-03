@@ -1,5 +1,5 @@
 from audioop import reverse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View
 from django.http import HttpResponse
 from django.views.generic.base import TemplateView
@@ -8,6 +8,9 @@ from django.views.generic.edit import CreateView
 from django.views.generic import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
+
 
 
 class Home(View):
@@ -32,10 +35,10 @@ class FinchList(TemplateView):
         context = super().get_context_data(**kwargs)
         name = self.request.GET.get("name")
         if name != None:
-            context["finches"] = Finch.objects.filter(name__icontains=name)
+            context["finches"] = Finch.objects.filter(name__icontains=name, user=self.request.user)
             context["header"] = f"Searching for '{name}'"
         else:
-            context["finches"] = Finch.objects.all()
+            context["finches"] = Finch.objects.filter(user=self.request.user)
             context["header"] = "Finch Gallery"
         return context
 
@@ -47,7 +50,12 @@ class FinchCreate(CreateView):
     model = Finch
     fields = ['name', 'img', 'habitat', 'food', 'nesting', 'description']
     template_name = "finch_create.html"
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(FinchCreate, self).form_valid(form)
     def get_success_url(self):
+        print(self.kwargs)
         return reverse('finch_detail', kwargs={'pk': self.object.pk})
 
 class FinchUpdate(UpdateView):
@@ -61,3 +69,18 @@ class FinchDelete(DeleteView):
     model = Finch
     template_name = 'finch_delete.html'
     success_url = '/finchgallery/'
+
+class Signup(View):
+    def get(self, request):
+        form = UserCreationForm()
+        context = {"form": form}
+        return render(request, "registration/signup.html", context)
+    def post(self, request):
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect("finchgallery")
+        else:
+            context = {"form": form}
+            return render(request, "registration/signup.html", context)

@@ -12,5 +12,6 @@ urlpatterns = [
     path('finchgallery/<int:pk>/', views.FinchDetail.as_view(), name="finch_detail"),
     path('finchgallery/<int:pk>/update', views.FinchUpdate.as_view(), name="finch_update"),
     path('finchgallery/<int:pk>/delete', views.FinchDelete.as_view(), name="finch_delete"),
+    path('accounts/signup/', views.Signup.as_view(), name="signup")
 ]
 

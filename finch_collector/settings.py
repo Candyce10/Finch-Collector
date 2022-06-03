@@ -116,3 +116,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Add this variable to specify where successful logins should redirect to
 LOGIN_REDIRECT_URL = '/finchgallery/'
+
+LOGOUT_REDIRECT_URL = '/'
