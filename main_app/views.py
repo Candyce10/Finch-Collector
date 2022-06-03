@@ -10,6 +10,9 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+
 
 
 
@@ -28,7 +31,7 @@ class About(TemplateView):
     template_name = "about.html"
 
 
-
+@method_decorator(login_required, name='dispatch')
 class FinchList(TemplateView):
     template_name= "finch_list.html"
     def get_context_data(self, **kwargs):
